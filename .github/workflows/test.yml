@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v1.6
+
 
       - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v1
@@ -31,6 +34,7 @@ jobs:
 
       - name: Jest run
         run: yarn test
+        
 
       - name: Report Fiber size
         run: yarn analyze-fiber
